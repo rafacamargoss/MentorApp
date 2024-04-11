@@ -3,6 +3,8 @@ package br.com.fiap.mentorapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -57,7 +59,16 @@ fun SwipeAppNavigation(){
 
     NotificationMessage(vm = vm)
     
-    NavHost(navController = navController, startDestination = DestinationScreen.Signup.route) {
+    NavHost(
+        navController = navController,
+        startDestination = DestinationScreen.Signup.route,
+        enterTransition = {
+            slideIntoContainer(towards = AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(600))
+        },
+        exitTransition = {
+            slideOutOfContainer(towards = AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(600))
+        }
+    ) {
         composable(DestinationScreen.Signup.route) {
             SignupScreen(navController, vm)
         }
