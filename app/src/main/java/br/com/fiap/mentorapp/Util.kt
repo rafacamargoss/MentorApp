@@ -22,6 +22,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import br.com.fiap.mentorapp.ui.components.LoadingAnimation
 import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
 
@@ -42,7 +43,7 @@ fun CommonProgressSpinner() {
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        CircularProgressIndicator()
+        LoadingAnimation()
     }
 }
 
