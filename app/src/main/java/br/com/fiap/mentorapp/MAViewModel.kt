@@ -60,7 +60,7 @@ class MAViewModel @Inject constructor(
 
     fun onSignup(username: String, email: String, pass: String) {
         if (username.isEmpty() or email.isEmpty() or pass.isEmpty()) {
-            handleException(customMessage = "Please fill in all fields")
+            handleException(customMessage = "Por favor preencha todos os campos")
             return
         }
         inProgress.value = true
@@ -74,11 +74,11 @@ class MAViewModel @Inject constructor(
                                 signedIn.value = true
                                 createOrUpdateProfile(username = username)
                             } else
-                                handleException(task.exception, "Signup failed")
+                                handleException(task.exception, "Falha ao tentar cadastrar.")
                             inProgress.value = false
                         }
                 else
-                    handleException(customMessage = "username already exists")
+                    handleException(customMessage = "Já existe um usuário com esse nome.")
             }
             .addOnFailureListener {
                 handleException(it)
@@ -87,7 +87,7 @@ class MAViewModel @Inject constructor(
 
     fun onLogin(email: String, pass: String) {
         if (email.isEmpty() or pass.isEmpty()) {
-            handleException(customMessage = "Please fill in all fields")
+            handleException(customMessage = "Por favor preencha todos os campos")
             return
         }
         inProgress.value = true

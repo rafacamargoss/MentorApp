@@ -51,8 +51,6 @@ import br.com.fiap.mentorapp.CommonProgressSpinner
 import br.com.fiap.mentorapp.MAViewModel
 import br.com.fiap.mentorapp.data.UserData
 import br.com.fiap.mentorapp.swipecards.Direction
-import br.com.fiap.mentorapp.swipecards.MatchProfile
-import br.com.fiap.mentorapp.swipecards.profiles
 import br.com.fiap.mentorapp.swipecards.rememberSwipeableCardState
 import br.com.fiap.mentorapp.swipecards.swipableCard
 import com.google.accompanist.systemuicontroller.rememberSystemUiController

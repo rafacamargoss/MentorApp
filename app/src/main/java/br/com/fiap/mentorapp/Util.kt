@@ -36,7 +36,6 @@ fun navigateTo(navController: NavController, route: String) {
 @Composable
 fun CommonProgressSpinner() {
     Row(modifier = Modifier
-        .alpha(0.5f)
         .background(Color.LightGray)
         .clickable(enabled = false) {}
         .fillMaxSize(),

@@ -7,4 +7,5 @@
     <color name="medium_grey">#FF585858</color>
     <color name="light_grey">#FFAFAFAF</color>
     <color name="background_black">#ff333333</color>
+    <color name="background_button_nav">#FFF23C72</color>
 </resources>
