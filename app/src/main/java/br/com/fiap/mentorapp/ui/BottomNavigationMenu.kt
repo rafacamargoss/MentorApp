@@ -1,7 +1,6 @@
 package br.com.fiap.mentorapp.ui
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -14,7 +13,6 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -43,7 +41,7 @@ fun BottomNavigationMenu(selectedItem: BottomNavigationItem, navController: NavC
             .padding(top = 4.dp, start = 4.dp, bottom = 4.dp),
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
-        for (item in BottomNavigationItem.values()) {
+        for (item in BottomNavigationItem.entries) {
             Card(
                 modifier = Modifier
                     .size(60.dp)
