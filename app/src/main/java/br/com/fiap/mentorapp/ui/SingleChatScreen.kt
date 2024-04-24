@@ -3,6 +3,7 @@ package br.com.fiap.mentorapp.ui
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,7 +19,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -31,12 +36,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import br.com.fiap.mentorapp.CommonDivider
 import br.com.fiap.mentorapp.CommonImage
 import br.com.fiap.mentorapp.MAViewModel
+import br.com.fiap.mentorapp.R
 import br.com.fiap.mentorapp.data.Message
 
 @Composable
@@ -116,13 +124,14 @@ fun Messages(modifier: Modifier, chatMessages: List<Message>, currentUserId: Str
             msg.message?.let {
                 val alignment = if (msg.sentBy == currentUserId) Alignment.End
                 else Alignment.Start
-                val color = if (msg.sentBy == currentUserId) Color(0xFF68C400)
-                else Color(0xFFC0C0C0)
+                val color = if (msg.sentBy == currentUserId) colorResource(id = R.color.primary_75)
+                else colorResource(id = R.color.light_grey)
 
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(8.dp)
+                        .padding(8.dp),
+                    horizontalAlignment = alignment
                 ) {
                     Text(
                         text = msg.message,
@@ -148,9 +157,20 @@ fun ReplyBox(reply: String, onReplyChange: (String) -> Unit, onSendReply: () -> 
             .padding(8.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            TextField(value = reply, onValueChange = onReplyChange, maxLines = 3)
-            Button(onClick = onSendReply) {
-                Text(text = "Send")
+            OutlinedTextField(
+                value = reply,
+                onValueChange = onReplyChange,
+                maxLines = 3,
+                colors = OutlinedTextFieldDefaults.colors(
+                    unfocusedBorderColor = colorResource(id = R.color.primary_50),
+                    focusedBorderColor = colorResource(id = R.color.primary_100)
+                ),
+            )
+            Button(
+                colors = ButtonDefaults.buttonColors(colorResource(id = R.color.primary_100)),
+                onClick = onSendReply
+            ) {
+                Icon(painter = painterResource(R.drawable.baseline_send), contentDescription = null)
             }
         }
     }
