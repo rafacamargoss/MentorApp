@@ -139,7 +139,7 @@ class MAViewModel @Inject constructor(
                                 populateCards()
                             }
                             .addOnFailureListener {
-                                handleException(it, "Cannot update user")
+                                handleException(it, "Não foi possivel atualizar o usuário.")
                             }
                     else {
                         db.collection(COLLECTION_USER).document(uid).set(userData)
@@ -148,7 +148,7 @@ class MAViewModel @Inject constructor(
                     }
                 }
                 .addOnFailureListener {
-                    handleException(it, "Cannot create user")
+                    handleException(it, "Não foi possivel criar usuário.")
                 }
         }
     }
@@ -158,7 +158,7 @@ class MAViewModel @Inject constructor(
         db.collection(COLLECTION_USER).document(uid)
             .addSnapshotListener { value, error ->
                 if (error != null)
-                    handleException(error, "Cannot retrieve user data")
+                    handleException(error, "Não foi possivel recuperar os dados do usuário.")
                 if (value != null) {
                     val user = value.toObject<UserData>()
                     userData.value = user
